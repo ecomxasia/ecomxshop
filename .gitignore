@@ -1,0 +1,4 @@
+
+*.sqlite3
+*.pyc
+ecomxshop/settings/pro.py

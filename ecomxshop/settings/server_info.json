@@ -1,0 +1,15 @@
+{
+    "production" : {
+        "SECRET_KEY" : "oil&80xg9%y@n@&xpo!l&w%$sr^uk5oogh!u*s$i7sp54*1_z=",
+        "DATABASES" : {
+            "default": {
+                "ENGINE": "django.db.backends.postgresql",
+                "NAME": "ecomxshop",
+                "USER": "ecomxasia",
+                "PASSWORD": "ecomxasia123!",
+                "HOST": "ecomxasia-postgres.cif3tlusmjrc.ap-northeast-2.rds.amazonaws.com",
+                "PORT": "5432"
+            }
+        }
+    }
+}
