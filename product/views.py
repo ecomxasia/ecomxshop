@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404 
 from django.http import JsonResponse
-from .models import Product, Brand
+from .models import Product, Brand, Origin
 
 def products_list(request):
     MAX_OBJECTS = 20
@@ -42,13 +42,13 @@ def brands_detail(request, pk):
     }}
     return JsonResponse(data)
 
-def origin_list(request):
+def origins_list(request):
     MAX_OBJECTS = 20
     origins = Origin.objects.all()[:20]
     data = {"results": list(origins.values("origin_name", "register_date"))}
     return JsonResponse(data)
 
-def origin_detail(request, pk):
+def origins_detail(request, pk):
     origin = get_object_or_404(Origin, pk=pk) 
     data = {"results": {
         "origin_name": origin.origin_name,

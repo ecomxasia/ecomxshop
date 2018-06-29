@@ -54,13 +54,11 @@ class ProductAdmin(admin.ModelAdmin):
 #    search_fields = ['product_name', 'brand', 'origin', 'manufacture_short_name', 'size', 'color']
 
 
-admin.site.register(Origin)
-#admin.site.register(Brand, BrandAdmin)
+admin.site.register(Origin, OriginAdmin)
+admin.site.register(Brand, BrandAdmin)
 admin.site.register(Manufacture, ManufactureAdmin)
 admin.site.register(Store, StoreAdmin)
 admin.site.register(UCategory, UCategoryAdmin)
 admin.site.register(MCategory, MCategoryAdmin)
 admin.site.register(LCategory, LCategoryAdmin)
-#admin.site.register(Product, ProductAdmin)
-admin.site.register(Product)
-admin.site.register(Brand)
+admin.site.register(Product, ProductAdmin)
