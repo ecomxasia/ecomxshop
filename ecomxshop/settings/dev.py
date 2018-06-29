@@ -12,8 +12,7 @@ SECRET_KEY = "oil&80xg9%y@n@&xpo!l&w%$sr^uk5oogh!u*s$i7sp54*1_z="
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -24,7 +23,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'product.apps.ProductConfig',
+    'rest_framework',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly', 
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
