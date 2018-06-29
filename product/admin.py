@@ -2,6 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import Origin, Brand, Manufacture, Store, Product, UCategory, MCategory, LCategory
+#from django.contrib.auth.models import User, Group
 
 class OriginAdmin(admin.ModelAdmin):
     list_display = ( 'origin_name', 'origin_short_name', 'register_date' )
@@ -62,3 +63,5 @@ admin.site.register(UCategory, UCategoryAdmin)
 admin.site.register(MCategory, MCategoryAdmin)
 admin.site.register(LCategory, LCategoryAdmin)
 admin.site.register(Product, ProductAdmin)
+#admin.site.register(User)
+#admin.site.register(Group)
