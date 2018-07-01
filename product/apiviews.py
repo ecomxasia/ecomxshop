@@ -1,12 +1,22 @@
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response 
 from django.shortcuts import get_object_or_404
-from .models import Product, Brand, Origin
-from product.serializers import ProductSerializer, BrandSerializer, OriginSerializer, UserSerializer
+from .models import Product
+from product.serializers import ProductSerializer, UserSerializer
+from django.contrib.auth import authenticate
 
-class UserCreate(generics.CreateAPIView):
-    serializer_class = UserSerializer
+class LoginView(APIView):
+    permission_classes = ()
+
+    def post(self, request, ):
+        username = request.data.get("username")
+        password = request.data.get("password")
+        user = authenticate(username=username, password=password)
+        if user:
+            return Response({ "token": user.auth_token.key })
+        else:
+            return Response({ "erroe": "Wrong Credentials" }, status=status.HTTP_400_BAD_REQUEST )
 
 class ProductList(APIView): 
     def get(self, request): 
@@ -20,27 +30,7 @@ class ProductDetail(APIView):
         data = ProductSerializer(product).data 
         return Response(data)
 
-class BrandList(APIView): 
-    def get(self, request): 
-        brands = Brand.objects.all()[:20]
-        data = BrandSerializer(brands, many=True).data 
-        return Response(data)
-
-class BrandDetail(APIView):
-    def get(self, request, pk):
-        brand = get_object_or_404(Brand, pk=pk) 
-        data = BrandSerializer(brand).data 
-        return Response(data)
-
-class OriginList(APIView): 
-    def get(self, request): 
-        origins = Origin.objects.all()[:20]
-        data = OriginSerializer(origins, many=True).data 
-        return Response(data)
-
-class OriginDetail(APIView):
-    def get(self, request, pk):
-        origin = get_object_or_404(Origin, pk=pk) 
-        data = OriginSerializer(origin).data 
-        return Response(data)
-
+class UserCreate(generics.CreateAPIView):
+    authentication_classes = ()
+    permission_classes = ()
+    serializer_class = UserSerializer

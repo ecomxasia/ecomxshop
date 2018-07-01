@@ -24,6 +24,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'product.apps.ProductConfig',
+    'order.apps.OrderConfig',
+    'commoncode.apps.CommoncodeConfig',
+    'customer.apps.CustomerConfig',
     'rest_framework',
     'rest_framework.authtoken',
 ]

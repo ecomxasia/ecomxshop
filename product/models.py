@@ -1,38 +1,10 @@
 import datetime
 from django.db import models
 from django.utils import timezone
+from commoncode.models import Origin, Brand, Manufacture, Store
 
 # Create your models here.
 
-class Origin(models.Model):
-    origin_name = models.CharField(max_length=100)
-    origin_short_name = models.CharField(max_length=50)
-    register_date = models.DateTimeField('date registered', auto_now=True)
-    def __str__(self):
-        return self.origin_name
-
-class Brand(models.Model):
-    brand_name = models.CharField(max_length=100)
-    brand_short_name = models.CharField(max_length=50)
-    register_date = models.DateTimeField('date registered', auto_now=True)
-    def __str__(self):
-        return self.brand_name
-
-class Manufacture(models.Model):
-    manufacture_name = models.CharField(max_length=100)
-    manufacture_short_name = models.CharField(max_length=50)
-    register_date = models.DateTimeField('date registered', auto_now=True)
-    def __str__(self):
-        return self.manufacture_name
-
-class Store(models.Model):
-    store_name = models.CharField(max_length=100)
-    location = models.CharField(max_length=100)
-    manager = models.CharField(max_length=100)
-    register_date = models.DateTimeField('date registered', auto_now=True)
-    def __str__(self):
-        return self.store_name
-    
 class UCategory(models.Model):
     category_name = models.CharField(max_length=10)
     register_date = models.DateTimeField('date registered', auto_now=True)
