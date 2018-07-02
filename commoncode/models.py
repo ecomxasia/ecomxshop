@@ -12,9 +12,11 @@ class CommonCode(models.Model):
     description = models.TextField() ##
     create_date = models.DateTimeField('Date Created', auto_now_add=True)
     update_date = models.DateTimeField('Date Update', auto_now=True)
+    seq = models.IntegerField(blank=True)
+    cond = models.CharField(max_length=10, blank=True)
  
     def __str__(self):
-        return self.code_group_name + " / " + self.code_type_name + " / " + self.code_key + " / "
+        return self.code_value
 
 class Origin(models.Model):
     origin_name = models.CharField(max_length=100)
