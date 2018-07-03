@@ -8,12 +8,12 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Order(models.Model):
-    store = models.ForeignKey(Store, on_delete=models.CASCADE)
+    store = models.ForeignKey(Store, on_delete=models.CASCADE, related_name='매장')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    order_date = models.DateTimeField('Date Ordered', auto_now=True)
+    order_date = models.DateTimeField(verbose_name='주문일시', auto_now=True)
     payment_method = models.ForeignKey(CommonCode, on_delete=models.CASCADE, related_name="payment method+",)
-    payment_amount = models.FloatField('Payment Amount')
+    payment_amount = models.FloatField(verbose_name='주문금액')
     payment_date = models.DateTimeField('Date Paid', auto_now=True)
     order_status = models.ForeignKey(CommonCode, on_delete=models.CASCADE, related_name="order status+",)
     shipping_method = models.ForeignKey(CommonCode, on_delete=models.CASCADE, related_name="shipping method+",)

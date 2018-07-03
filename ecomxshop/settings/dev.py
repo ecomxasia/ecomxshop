@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sample.apps.SampleConfig',
     'product.apps.ProductConfig',
     'order.apps.OrderConfig',
     'commoncode.apps.CommoncodeConfig',
